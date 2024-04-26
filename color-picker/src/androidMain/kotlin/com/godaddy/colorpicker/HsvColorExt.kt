@@ -1,5 +1,5 @@
 // ktlint-disable filename
-package com.godaddy.android.colorpicker
+package com.godaddy.colorpicker
 
 /**
  * Convert HsvColor to Android Color Int

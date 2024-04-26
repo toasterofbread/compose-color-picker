@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -11,8 +11,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntSize
-import com.godaddy.android.colorpicker.HsvColor
-import com.godaddy.android.colorpicker.toRadian
+import com.godaddy.colorpicker.HsvColor
+import com.godaddy.colorpicker.toRadian
 import kotlin.math.cos
 import kotlin.math.sin
 

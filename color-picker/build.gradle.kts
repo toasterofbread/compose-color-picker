@@ -1,65 +1,159 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.dokka") version "1.7.20"
-    id("org.jetbrains.compose") version "1.3.0"
-    id("com.android.library")
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.dokka)
     id("maven-publish")
     id("signing")
 }
 
 kotlin {
-    android("android") {
+    androidTarget {
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "${JavaVersion.VERSION_1_8}"
+                freeCompilerArgs += "-Xjdk-release=${JavaVersion.VERSION_1_8}"
+            }
+        }
         publishLibraryVariants("release")
+        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant {
+            sourceSetTree.set(KotlinSourceSetTree.test)
+            dependencies {
+                debugImplementation(libs.androidx.testManifest)
+                implementation(libs.androidx.junit4)
+            }
+        }
     }
+
     jvm()
-    js(IR) {
+
+    js {
         browser()
+        binaries.executable()
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "ComposeApp"
+            isStatic = true
+        }
     }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(compose.runtime)
-                implementation(compose.material)
-                implementation("com.github.ajalt.colormath:colormath:3.2.0")
+        all {
+            languageSettings {
+                optIn("org.jetbrains.compose.resources.ExperimentalResourceApi")
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
+        commonMain.dependencies {
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.components.resources)
+            implementation(compose.components.uiToolingPreview)
+            implementation(libs.colormath)
         }
-        val androidTest by getting {
-            dependencies {
-                implementation("junit:junit:4.13.2")
-            }
+
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
         }
-        val jvmMain by getting {
-            dependencies {
-                implementation(compose.preview)
-            }
+
+        androidMain.dependencies {
+            implementation(compose.uiTooling)
+            implementation(libs.androidx.activityCompose)
         }
-        val jvmTest by getting
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+
+        jsMain.dependencies {
+            implementation(compose.html.core)
+        }
+
+        iosMain.dependencies {
+        }
+
     }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "11"
-    }
+    // https://stackoverflow.com/questions/78133592/kmm-project-build-error-testclasses-not-found-in-project-shared
+    task("testClasses")
 }
 
 android {
-    namespace = "com.godaddy.common.colorpicker"
-    compileSdk = 33
+    namespace = "com.godaddy.colorpicker"
+    compileSdk = 34
+
     defaultConfig {
-        minSdk = 21
+        minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    sourceSets["main"].apply {
+        manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        res.srcDirs("src/androidMain/res")
+    }
+    //https://developer.android.com/studio/test/gradle-managed-devices
+    @Suppress("UnstableApiUsage")
+    testOptions {
+        managedDevices.devices {
+            maybeCreate<ManagedVirtualDevice>("pixel5").apply {
+                device = "Pixel 5"
+                apiLevel = 34
+                systemImageSource = "aosp"
+            }
+        }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11"
     }
 }
 
-val dokkaOutputDir = buildDir.resolve("dokka")
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "org.company.app.desktopApp"
+            packageVersion = "1.0.0"
+        }
+    }
+}
+
+compose.experimental {
+    web.application {}
+}
+
+val dokkaOutputDir = layout.buildDirectory.dir("dokka")
 
 tasks.dokkaHtml.configure {
     outputDirectory.set(dokkaOutputDir)
@@ -103,7 +197,7 @@ signing {
 publishing {
 
     publications.withType(MavenPublication::class) {
-        groupId = "com.godaddy.android.colorpicker"
+        groupId = "com.godaddy.colorpicker"
         artifactId = "compose-color-picker"
         version = "0.7.0"
 

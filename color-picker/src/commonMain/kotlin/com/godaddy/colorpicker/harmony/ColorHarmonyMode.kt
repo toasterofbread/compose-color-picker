@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 enum class ColorHarmonyMode {
     NONE,

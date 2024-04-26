@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 @Composable
 internal fun ColorWheel(

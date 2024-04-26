@@ -1,11 +1,11 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 @Composable
 internal fun BrightnessBar(

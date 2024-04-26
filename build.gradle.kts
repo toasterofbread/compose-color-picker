@@ -1,30 +1,13 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
-        classpath("com.android.tools.build:gradle:7.3.1")
-    }
+plugins {
+    alias(libs.plugins.multiplatform).apply(false)
+    alias(libs.plugins.compose).apply(false)
+    alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.android.library).apply(false)
+    alias(libs.plugins.dokka).apply(false)
+    alias(libs.plugins.spotless)
 }
 
 group = "com.godaddy"
 version = "0.5.0"
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-    }
-}
-
-plugins {
-    id("com.diffplug.spotless") version "6.10.0"
-}
 
 apply("${project.rootDir}/gradle/spotless.gradle")

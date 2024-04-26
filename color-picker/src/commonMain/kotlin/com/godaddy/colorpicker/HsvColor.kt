@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker
+package com.godaddy.colorpicker
 
 /**
  * A representation of Color in Hue, Saturation and Value form.
@@ -8,7 +8,7 @@ import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.ui.graphics.Color
 import com.github.ajalt.colormath.model.HSV
 import com.github.ajalt.colormath.model.RGB
-import com.godaddy.android.colorpicker.harmony.ColorHarmonyMode
+import com.godaddy.colorpicker.harmony.ColorHarmonyMode
 
 /**
  * A representation of Color in Hue, Saturation and Value form.

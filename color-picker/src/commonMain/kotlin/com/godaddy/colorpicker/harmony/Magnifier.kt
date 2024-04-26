@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 /**
  * Magnifier displayed on top of [position] with the currently selected [color].

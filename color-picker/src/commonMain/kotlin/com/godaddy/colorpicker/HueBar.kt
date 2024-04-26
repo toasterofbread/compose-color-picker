@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker
+package com.godaddy.colorpicker
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.awaitFirstDown

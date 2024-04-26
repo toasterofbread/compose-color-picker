@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker
+package com.godaddy.colorpicker
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

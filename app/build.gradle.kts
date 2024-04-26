@@ -21,7 +21,7 @@ dependencies {
 android {
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.godaddy.android.colorpicker"
+        applicationId = "com.godaddy.colorpicker"
         minSdk = 21
         targetSdk = 33
         versionCode = 1

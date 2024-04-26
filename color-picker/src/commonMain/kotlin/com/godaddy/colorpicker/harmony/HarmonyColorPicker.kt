@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker.harmony
+package com.godaddy.colorpicker.harmony
 
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.drag
@@ -26,8 +26,8 @@ import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.godaddy.android.colorpicker.HsvColor
-import com.godaddy.android.colorpicker.toDegree
+import com.godaddy.colorpicker.HsvColor
+import com.godaddy.colorpicker.toDegree
 import kotlin.math.atan2
 import kotlin.math.hypot
 import kotlin.math.min

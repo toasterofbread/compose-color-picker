@@ -1,6 +1,6 @@
 # Android Jetpack Compose Color Picker 🎨
 
-![Maven Central](https://img.shields.io/maven-central/v/com.godaddy.android.colorpicker/compose-color-picker-android?style=flat-square)
+![Maven Central](https://img.shields.io/maven-central/v/com.godaddy.colorpicker/compose-color-picker-android?style=flat-square)
 
 A component that provides two different HSV color pickers, written in Jetpack Compose.
 1. ClassicColorPicker - Square picker with alpha channel
@@ -17,18 +17,18 @@ https://user-images.githubusercontent.com/9973046/154515203-f0818a14-3bb0-4e5a-9
 Add the dependency to your `build.gradle` file:
 
 ```
-implementation 'com.godaddy.android.colorpicker:compose-color-picker:<latest-version>'
+implementation 'com.godaddy.colorpicker:compose-color-picker:<latest-version>'
 
 // with Android ColorInt extensions
-implementation 'com.godaddy.android.colorpicker:compose-color-picker-android:<latest-version>'
+implementation 'com.godaddy.colorpicker:compose-color-picker-android:<latest-version>'
 // desktop jvm version
-implementation 'com.godaddy.android.colorpicker:compose-color-picker-jvm:<latest-version>'
+implementation 'com.godaddy.colorpicker:compose-color-picker-jvm:<latest-version>'
 ```
 
 Add `ClassicColorPicker` to your Compose hierarchy:
 
 ```kotlin
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 Column {
     ClassicColorPicker(
@@ -63,7 +63,7 @@ If you wish to not display other magnifiers - set `ColorHarmonyMode.NONE` as you
 To change the size of the control, pass in the `Modifier` option:
 
 ```kotlin
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 ClassicColorPicker(
     modifier = Modifier.height(200.dp),
@@ -78,7 +78,7 @@ ClassicColorPicker(
 To hide the alpha bar, change the `showAlphaBar` parameter:
 
 ```kotlin
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 ClassicColorPicker(
     showAlphaBar = false,
@@ -110,7 +110,7 @@ HarmonyColorPicker(
 To change the size of the control, pass in the `Modifier` option:
 
 ```kotlin
-import com.godaddy.android.colorpicker.HsvColor
+import com.godaddy.colorpicker.HsvColor
 
 HarmonyColorPicker(
     modifier = Modifier.height(200.dp),
