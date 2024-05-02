@@ -99,14 +99,14 @@ kotlin {
 }
 
 android {
-    namespace = "org.company.app"
+    namespace = "com.godaddy.colorpicker.app"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 24
         targetSdk = 34
 
-        applicationId = "org.company.app.androidApp"
+        applicationId = "com.godaddy.colorpicker.app"
         versionCode = 1
         versionName = "1.0.0"
 
@@ -145,7 +145,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.company.app.desktopApp"
+            packageName = "com.godaddy.colorpicker.app.desktopApp"
             packageVersion = "1.0.0"
         }
     }

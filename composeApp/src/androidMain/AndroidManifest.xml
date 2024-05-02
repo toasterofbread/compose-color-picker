@@ -4,7 +4,7 @@
     <application
         android:name="com.godaddy.app.AndroidApp"
         android:icon="@android:drawable/ic_menu_compass"
-        android:label="color-picker-update"
+        android:label="color-picker"
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
             android:name="com.godaddy.app.AppActivity"
