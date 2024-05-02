@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker
+package com.godaddy.app
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -12,18 +12,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.godaddy.android.colorpicker.theme.BackButton
-import com.godaddy.android.colorpicker.theme.ComposeColorPickerTheme
+import com.godaddy.app.theme.BackButton
+import com.godaddy.colorpicker.ClassicColorPicker
+import com.godaddy.colorpicker.HsvColor
+import composecolorpicker.composeapp.generated.resources.Res
+import composecolorpicker.composeapp.generated.resources.classic_color_picker_sample
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun ClassicColorPickerScreen(navController: NavController) {
     Column {
         TopAppBar(
             title = {
-                Text(stringResource(R.string.classic_color_picker_sample))
+                Text(stringResource(Res.string.classic_color_picker_sample))
             },
             navigationIcon = {
                 BackButton { navController.navigateUp() }
@@ -46,27 +49,27 @@ fun ClassicColorPickerScreen(navController: NavController) {
     }
 }
 
-@Composable
-fun ClassicColorPickerPreview() {
-    ComposeColorPickerTheme {
-        ClassicColorPicker(
-            modifier = Modifier.height(300.dp),
-            color = HsvColor.from(Color.Green),
-            onColorChanged = {
-            }
-        )
-    }
-}
-
-@Composable
-fun ClassicColorPickerNoAlphaPreview() {
-    ComposeColorPickerTheme {
-        ClassicColorPicker(
-            modifier = Modifier.height(300.dp),
-            color = HsvColor.from(color = Color.Magenta),
-            showAlphaBar = false,
-            onColorChanged = {
-            }
-        )
-    }
-}
+//@Composable
+//fun ClassicColorPickerPreview() {
+//    ComposeColorPickerTheme {
+//        ClassicColorPicker(
+//            modifier = Modifier.height(300.dp),
+//            color = HsvColor.from(Color.Green),
+//            onColorChanged = {
+//            }
+//        )
+//    }
+//}
+//
+//@Composable
+//fun ClassicColorPickerNoAlphaPreview() {
+//    ComposeColorPickerTheme {
+//        ClassicColorPicker(
+//            modifier = Modifier.height(300.dp),
+//            color = HsvColor.from(color = Color.Magenta),
+//            showAlphaBar = false,
+//            onColorChanged = {
+//            }
+//        )
+//    }
+//}

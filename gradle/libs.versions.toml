@@ -1,7 +1,8 @@
 [versions]
 
 kotlin = "1.9.23"
-compose = "1.6.1"
+compose = "1.6.10-beta03"
+navigation-compose = "2.7.0-alpha03"
 agp = "8.2.2"
 androidx-activityCompose = "1.8.2"
 androidx-uiTest = "1.6.4"
@@ -15,6 +16,7 @@ androidx-activityCompose = { module = "androidx.activity:activity-compose", vers
 androidx-testManifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "androidx-uiTest" }
 androidx-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "androidx-uiTest" }
 colormath = { module = "com.github.ajalt.colormath:colormath", version.ref = "colormath" }
+navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigation-compose" }
 
 [plugins]
 

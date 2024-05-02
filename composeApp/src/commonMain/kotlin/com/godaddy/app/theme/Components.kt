@@ -1,14 +1,15 @@
 // ktlint-disable filename
-package com.godaddy.android.colorpicker.theme
+package com.godaddy.app.theme
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
-import com.godaddy.android.colorpicker.R
+import composecolorpicker.composeapp.generated.resources.Res
+import composecolorpicker.composeapp.generated.resources.content_description_back_button
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BackButton(onBackPress: () -> Unit) {
@@ -18,9 +19,9 @@ fun BackButton(onBackPress: () -> Unit) {
         }
     ) {
         Icon(
-            Icons.Filled.ArrowBack,
+            Icons.AutoMirrored.Filled.ArrowBack,
             tint = MaterialTheme.colors.onPrimary,
-            contentDescription = stringResource(id = R.string.content_description_back_button)
+            contentDescription = stringResource(Res.string.content_description_back_button)
         )
     }
 }

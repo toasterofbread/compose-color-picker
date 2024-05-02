@@ -1,5 +1,6 @@
 rootProject.name = "ComposeColorPicker"
 include (":color-picker")
+include (":composeApp")
 
 pluginManagement {
     repositories {

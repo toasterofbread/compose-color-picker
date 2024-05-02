@@ -1,4 +1,4 @@
-package com.godaddy.android.colorpicker
+package com.godaddy.app
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,19 +18,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.godaddy.android.colorpicker.harmony.ColorHarmonyMode
-import com.godaddy.android.colorpicker.harmony.HarmonyColorPicker
-import com.godaddy.android.colorpicker.theme.BackButton
+import com.godaddy.app.theme.BackButton
+import com.godaddy.colorpicker.HsvColor
+import com.godaddy.colorpicker.harmony.ColorHarmonyMode
+import com.godaddy.colorpicker.harmony.HarmonyColorPicker
+import composecolorpicker.composeapp.generated.resources.Res
+import composecolorpicker.composeapp.generated.resources.harmony_color_picker_sample
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HarmonyColorPickerScreen(navController: NavController) {
     Column {
         TopAppBar(
             title = {
-                Text(stringResource(R.string.harmony_color_picker_sample))
+                Text(stringResource(Res.string.harmony_color_picker_sample))
             },
             navigationIcon = {
                 BackButton { navController.navigateUp() }
@@ -60,7 +63,7 @@ fun HarmonyColorPickerScreen(navController: NavController) {
         DropdownMenu(expanded, onDismissRequest = {
             expanded = false
         }) {
-            ColorHarmonyMode.values().forEach {
+            ColorHarmonyMode.entries.forEach {
                 DropdownMenuItem(onClick = {
                     harmonyMode = it
                     expanded = false
