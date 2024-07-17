@@ -243,6 +243,10 @@ publishing {
     }
 }
 
+rootProject.plugins.withType(org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin::class.java) {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().nodeVersion = "16.0.0"
+}
+
 afterEvaluate {
     tasks.getByName("publishAndroidReleasePublicationToMavenLocal") {
         dependsOn("signJsPublication")
