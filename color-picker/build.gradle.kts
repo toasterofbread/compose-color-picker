@@ -243,3 +243,35 @@ publishing {
     }
 }
 
+afterEvaluate {
+    tasks.getByName("publishAndroidReleasePublicationToMavenLocal") {
+        dependsOn("signJsPublication")
+        dependsOn("signJvmPublication")
+        dependsOn("signKotlinMultiplatformPublication")
+        dependsOn("signWasmJsPublication")
+    }
+    tasks.getByName("publishJsPublicationToMavenLocal") {
+        dependsOn("signAndroidReleasePublication")
+        dependsOn("signJvmPublication")
+        dependsOn("signKotlinMultiplatformPublication")
+        dependsOn("signWasmJsPublication")
+    }
+    tasks.getByName("publishJvmPublicationToMavenLocal") {
+        dependsOn("signAndroidReleasePublication")
+        dependsOn("signJsPublication")
+        dependsOn("signKotlinMultiplatformPublication")
+        dependsOn("signWasmJsPublication")
+    }
+    tasks.getByName("publishKotlinMultiplatformPublicationToMavenLocal") {
+        dependsOn("signAndroidReleasePublication")
+        dependsOn("signJsPublication")
+        dependsOn("signJvmPublication")
+        dependsOn("signWasmJsPublication")
+    }
+    tasks.getByName("publishWasmJsPublicationToMavenLocal") {
+        dependsOn("signAndroidReleasePublication")
+        dependsOn("signJsPublication")
+        dependsOn("signJvmPublication")
+        dependsOn("signKotlinMultiplatformPublication")
+    }
+}
